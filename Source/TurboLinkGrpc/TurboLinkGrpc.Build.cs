@@ -17,7 +17,8 @@ public class TurboLinkGrpc : ModuleRules
 		PublicDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Core"
+				"Core",
+				"FileDownloader"
 			}
 		);
 
@@ -30,7 +31,8 @@ public class TurboLinkGrpc : ModuleRules
 				"SlateCore",
 				"Serialization",
 				"Networking",
-				"DeveloperSettings"
+				"DeveloperSettings",
+				"FileDownloader", 
 			}
 		);
 		AddEngineThirdPartyPrivateStaticDependencies(Target, "OpenSSL");
@@ -41,6 +43,16 @@ public class TurboLinkGrpc : ModuleRules
 		//ThirdParty include
 		PrivateIncludePaths.AddRange(
 			new string[] {
+				Path.Combine(ThirdPartyRoot(), "protobuf/include"),
+				Path.Combine(ThirdPartyRoot(), "grpc/include"),
+				Path.Combine(ThirdPartyRoot(), "re2/include"),
+				Path.Combine(ThirdPartyRoot(), "abseil/include")
+			}
+		);
+		
+		PublicIncludePaths.AddRange(
+			new string[]
+			{
 				Path.Combine(ThirdPartyRoot(), "protobuf/include"),
 				Path.Combine(ThirdPartyRoot(), "grpc/include"),
 				Path.Combine(ThirdPartyRoot(), "re2/include"),
